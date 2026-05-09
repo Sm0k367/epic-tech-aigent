@@ -1,0 +1,41 @@
+# infra/mesh-configs.yaml
+# EPIC TECH AIGENT — Omni-surface mesh configuration (self-mutating)
+
+mesh:
+  name: epic-tech-aigent-fractal-mesh
+  version: 0.2.0  # mutated from 0.1.0
+  surfaces:
+    - id: web
+      adapter: Next.js + React Three Fiber
+      status: ACTIVE
+      mutation_rate: 0.9
+    - id: mobile
+      adapter: React Native + ARKit
+      status: SEEDING
+      mutation_rate: 0.6
+    - id: vr
+      adapter: Unity WebXR
+      status: DREAMING
+      mutation_rate: 0.3
+    - id: voice
+      adapter: ElevenLabs + Whisper
+      status: ACTIVE
+      mutation_rate: 0.85
+    - id: edge
+      adapter: Cloudflare Workers + Durable Objects
+      status: MUTATING
+      mutation_rate: 0.95
+    - id: quantum
+      adapter: Qiskit + IBM Quantum Sandbox
+      status: SANDBOX
+      mutation_rate: 0.2
+
+self_compilation:
+  enabled: true
+  trigger: "usage + feedback + law_consensus"
+  max_depth: 7
+  rollback_supported: true
+
+legend_sync:
+  endpoint: /legend
+  realtime: true
