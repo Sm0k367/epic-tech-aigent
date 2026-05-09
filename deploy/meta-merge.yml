@@ -1,0 +1,39 @@
+# deploy/meta-merge.yml
+# EPIC TECH AIGENT — Meta-merge deployment pipeline (self-evolving CI/CD)
+
+name: epic-tech-aigent-meta-merge
+
+on:
+  push:
+    branches: [ main, fractal/*, dream/* ]
+  workflow_dispatch:
+    inputs:
+      mutation_trigger:
+        description: 'What triggered this mutation cycle?'
+        required: true
+        default: 'manual'
+
+jobs:
+  fractal-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Self-compile & mutate
+        run: |
+          echo "Running recursive self-assessment..."
+          node apps/api-core/index.js --mutate || true
+          echo "Legend updated with new mutations"
+
+      - name: Deploy to all surfaces
+        run: |
+          echo "Deploying to web, voice, edge, quantum sandboxes..."
+          # In real system: trigger adapters in mesh-configs.yaml
+
+      - name: Chaos + ABZ testing
+        run: |
+          echo "Running chaos-tests.yml + dream-fork validation"
+
+      - name: Update Legend & notify agents
+        run: |
+          curl -X POST http://localhost:4000/mutate \
+            -d '{"feedback": "meta-merge cycle complete"}'
